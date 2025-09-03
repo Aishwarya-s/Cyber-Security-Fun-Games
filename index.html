@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Fun Zone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">🛡️ Cybersecurity Fun Zone</h1>
+            <p class="header__subtitle">Test your cybersecurity knowledge with interactive games</p>
+        </header>
+
+        <nav class="nav">
+            <button class="nav__tab nav__tab--active" data-game="riddle">What am I?</button>
+            <button class="nav__tab" data-game="word">Guess the Word</button>
+            <button class="nav__tab" data-game="vulnerability">Spot the Vulnerability</button>
+            <button class="nav__tab" data-game="card">Card Battle</button>
+        </nav>
+
+        <!-- Game 1: What am I? (Riddle Game) -->
+        <div class="game-container game-container--active" id="riddle-game">
+            <div class="game-card">
+                <div class="game-header">
+                    <h2 class="game-title">🤔 What am I?</h2>
+                    <p class="game-instructions">We have some fun riddles. Can you guess the word?</p>
+                    <div class="game-stats">
+                        <span class="score">Score: <span id="riddle-score">0</span></span>
+                        <span class="progress">Riddle <span id="riddle-current">1</span> of <span id="riddle-total">15</span></span>
+                    </div>
+                </div>
+                
+                <div class="game-content">
+                    <div class="riddle-container">
+                        <p class="riddle-text" id="riddle-text">Loading riddle...</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="text" id="riddle-input" class="form-control" placeholder="Enter your answer here...">
+                        <button class="btn btn--primary" id="riddle-submit">Submit Answer</button>
+                    </div>
+                    
+                    <div class="game-actions">
+                        <button class="btn btn--outline" id="riddle-hint">💡 Hint</button>
+                        <button class="btn btn--outline" id="riddle-reveal">👁️ View Answer</button>
+                    </div>
+                    
+                    <div class="feedback" id="riddle-feedback"></div>
+                    
+                    <button class="btn btn--secondary" id="riddle-next" style="display: none;">Next Riddle</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game 2: Guess the Word (Picture Puzzle) -->
+        <div class="game-container" id="word-game">
+            <div class="game-card">
+                <div class="game-header">
+                    <h2 class="game-title">🖼️ Guess the Word</h2>
+                    <p class="game-instructions">Look at the symbols and guess the cybersecurity word.</p>
+                    <div class="game-stats">
+                        <span class="score">Score: <span id="word-score">0</span></span>
+                        <span class="progress">Word <span id="word-current">1</span> of <span id="word-total">10</span></span>
+                    </div>
+                </div>
+                
+                <div class="game-content">
+                    <div class="symbol-container" id="word-symbols">
+                        🖼️ Loading symbols...
+                    </div>
+                    
+                    <div class="word-blanks" id="word-blanks">
+                        _ _ _ _
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="text" id="word-input" class="form-control" placeholder="Type a letter or the full word...">
+                        <button class="btn btn--primary" id="word-submit">Submit</button>
+                    </div>
+                    
+                    <div class="game-actions">
+                        <button class="btn btn--outline" id="word-hint">💡 Hint</button>
+                        <button class="btn btn--outline" id="word-reveal">👁️ View Answer</button>
+                    </div>
+                    
+                    <div class="feedback" id="word-feedback"></div>
+                    
+                    <button class="btn btn--secondary" id="word-next" style="display: none;">Next Word</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game 3: Spot the Vulnerability (Scenario Game) -->
+        <div class="game-container" id="vulnerability-game">
+            <div class="game-card">
+                <div class="game-header">
+                    <h2 class="game-title">🔍 Spot the Vulnerability</h2>
+                    <p class="game-instructions">Look carefully at the image and find all security vulnerabilities.</p>
+                    <div class="game-stats">
+                        <span class="score">Score: <span id="vulnerability-score">0</span></span>
+                        <span class="progress">Scenario <span id="vulnerability-current">1</span> of <span id="vulnerability-total">3</span></span>
+                    </div>
+                </div>
+                
+                <div class="game-content">
+                    <div class="scenario-container">
+                        <h3 class="scenario-title" id="scenario-title">Loading scenario...</h3>
+                        <p class="scenario-description" id="scenario-description">Loading description...</p>
+                        
+                        <div class="scenario-image">
+                            <img id="scenario-img" src="" alt="Scenario image" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-base); margin-bottom: var(--space-16);">
+                        </div>
+                        
+                        <div class="vulnerability-scene" id="vulnerability-scene">
+                            <!-- Clickable vulnerability options will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="feedback" id="vulnerability-feedback"></div>
+                    
+                    <div class="vulnerability-actions">
+                        <button class="btn btn--secondary" id="vulnerability-next" style="display: none;">Next Scenario</button>
+                        <button class="btn btn--outline" id="vulnerability-reset">Reset Scene</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game 4: Card Battle -->
+        <div class="game-container" id="card-game">
+            <div class="game-card">
+                <div class="game-header">
+                    <h2 class="game-title">⚔️ Card Battle</h2>
+                    <p class="game-instructions">Choose your defense strategy against cyber threats!</p>
+                    <div class="game-stats">
+                        <span class="score">Score: <span id="card-score">0</span></span>
+                        <span class="progress">Battle <span id="card-current">1</span> of <span id="card-total">10</span></span>
+                    </div>
+                </div>
+                
+                <div class="game-content">
+                    <div class="battle-arena">
+                        <div class="hacker-card" id="hacker-card">
+                            <h4>🏴‍☠️ Hacker Attack</h4>
+                            <p id="hacker-description">Loading attack...</p>
+                            <div class="card-power hidden" id="hacker-power">Power: ?</div>
+                        </div>
+                        
+                        <div class="vs-indicator">⚔️ VS ⚔️</div>
+                        
+                        <div class="player-cards" id="player-cards">
+                            <!-- Player response cards will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="battle-result" id="battle-result"></div>
+                    
+                    <div class="card-actions">
+                        <button class="btn btn--secondary" id="card-next" style="display: none;">Next Battle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
